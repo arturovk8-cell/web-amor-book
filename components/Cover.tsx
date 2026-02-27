@@ -26,10 +26,10 @@ export function Cover({
       <div className="absolute -left-8 top-0 h-full w-20 rotate-6 bg-black/25 blur-xl" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_15%,rgba(255,193,107,0.45),transparent_35%),radial-gradient(circle_at_80%_85%,rgba(249,115,96,0.35),transparent_35%)]" />
 
-      <div className="relative flex h-full flex-col justify-between p-7 md:p-10">
+      <div className="relative flex h-full flex-col justify-between gap-8 p-7 md:gap-12 md:p-10">
         {isFront ? (
           <>
-            <div className="space-y-5">
+            <div className="space-y-7 md:space-y-8">
               <p className="w-fit rounded-full border border-amber-100/50 bg-black/20 px-3 py-1 text-xs uppercase tracking-[0.2em]">
                 Edición de colección
               </p>
@@ -43,7 +43,7 @@ export function Cover({
               ) : null}
             </div>
             {smallText ? (
-              <p className="max-w-md rounded-xl border border-amber-50/30 bg-black/25 p-4 text-sm leading-relaxed text-amber-100">
+              <p className="mt-4 max-w-md rounded-xl border border-amber-50/30 bg-black/25 p-4 text-sm leading-relaxed text-amber-100 md:mt-6">
                 {smallText}
               </p>
             ) : null}

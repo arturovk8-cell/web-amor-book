@@ -1,7 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { bookMeta, type StoryPage } from "@/data/pages";
 import { Controls } from "./Controls";
 import { Cover } from "./Cover";
@@ -19,12 +19,6 @@ export function Book({ pages }: BookProps) {
 
   const canPrev = currentIndex > 0;
   const canNext = currentIndex < totalPages - 1;
-
-  const currentLabel = useMemo(() => {
-    if (currentIndex === 0) return "Portada";
-    if (currentIndex === totalPages - 1) return "Contraportada";
-    return `Página ${currentIndex} de ${pages.length}`;
-  }, [currentIndex, pages.length, totalPages]);
 
   const next = () => {
     if (!canNext) return;
@@ -88,7 +82,6 @@ export function Book({ pages }: BookProps) {
           onNext={next}
           canPrev={canPrev}
           canNext={canNext}
-          currentLabel={currentLabel}
         />
       </div>
     </div>

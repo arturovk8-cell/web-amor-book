@@ -60,6 +60,180 @@ body {
   pointer-events: none;
 }
 
+.heart-rain {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.heart-drop {
+  --heart-size: 18px;
+  --duration: 14s;
+  --delay: 0s;
+  --drift: 0px;
+  position: absolute;
+  top: 110%;
+  left: 50%;
+  width: var(--heart-size);
+  height: var(--heart-size);
+  transform: translateX(-50%) rotate(-45deg);
+  border-radius: 3px;
+  background: rgba(249, 115, 96, 0.45);
+  opacity: 0;
+  animation: heart-rise var(--duration) linear infinite;
+  animation-delay: var(--delay);
+}
+
+.heart-drop::before,
+.heart-drop::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  background: inherit;
+}
+
+.heart-drop::before {
+  top: -50%;
+  left: 0;
+}
+
+.heart-drop::after {
+  top: 0;
+  left: 50%;
+}
+
+.heart-drop:nth-child(1) {
+  left: 4%;
+  --heart-size: 14px;
+  --duration: 12s;
+  --delay: -2s;
+  --drift: 18px;
+}
+
+.heart-drop:nth-child(2) {
+  left: 11%;
+  --heart-size: 20px;
+  --duration: 15s;
+  --delay: -7s;
+  --drift: -26px;
+}
+
+.heart-drop:nth-child(3) {
+  left: 19%;
+  --heart-size: 16px;
+  --duration: 13s;
+  --delay: -4s;
+  --drift: 22px;
+}
+
+.heart-drop:nth-child(4) {
+  left: 27%;
+  --heart-size: 12px;
+  --duration: 10.5s;
+  --delay: -6s;
+  --drift: -14px;
+}
+
+.heart-drop:nth-child(5) {
+  left: 34%;
+  --heart-size: 18px;
+  --duration: 16s;
+  --delay: -3s;
+  --drift: 30px;
+}
+
+.heart-drop:nth-child(6) {
+  left: 41%;
+  --heart-size: 15px;
+  --duration: 12.8s;
+  --delay: -8s;
+  --drift: -20px;
+}
+
+.heart-drop:nth-child(7) {
+  left: 48%;
+  --heart-size: 22px;
+  --duration: 17s;
+  --delay: -10s;
+  --drift: 34px;
+}
+
+.heart-drop:nth-child(8) {
+  left: 56%;
+  --heart-size: 13px;
+  --duration: 11.4s;
+  --delay: -1s;
+  --drift: -16px;
+}
+
+.heart-drop:nth-child(9) {
+  left: 63%;
+  --heart-size: 19px;
+  --duration: 14.5s;
+  --delay: -9s;
+  --drift: 24px;
+}
+
+.heart-drop:nth-child(10) {
+  left: 70%;
+  --heart-size: 16px;
+  --duration: 12.4s;
+  --delay: -5s;
+  --drift: -18px;
+}
+
+.heart-drop:nth-child(11) {
+  left: 77%;
+  --heart-size: 21px;
+  --duration: 16.5s;
+  --delay: -12s;
+  --drift: 30px;
+}
+
+.heart-drop:nth-child(12) {
+  left: 83%;
+  --heart-size: 14px;
+  --duration: 11s;
+  --delay: -2.5s;
+  --drift: -22px;
+}
+
+.heart-drop:nth-child(13) {
+  left: 89%;
+  --heart-size: 17px;
+  --duration: 13.5s;
+  --delay: -6.5s;
+  --drift: 16px;
+}
+
+.heart-drop:nth-child(14) {
+  left: 94%;
+  --heart-size: 12px;
+  --duration: 10s;
+  --delay: -4.5s;
+  --drift: -12px;
+}
+
+.heart-drop:nth-child(15) {
+  left: 52%;
+  --heart-size: 15px;
+  --duration: 18s;
+  --delay: -11s;
+  --drift: -36px;
+}
+
+.heart-drop:nth-child(16) {
+  left: 24%;
+  --heart-size: 23px;
+  --duration: 19s;
+  --delay: -13s;
+  --drift: 40px;
+}
+
 .typewriter-caret {
   display: inline-block;
   margin-left: 4px;
@@ -68,6 +242,26 @@ body {
   background-color: currentColor;
   animation: blink 1s steps(1) infinite;
   vertical-align: bottom;
+}
+
+@keyframes heart-rise {
+  0% {
+    transform: translate3d(0, 0, 0) rotate(-45deg) scale(0.8);
+    opacity: 0;
+  }
+
+  12% {
+    opacity: 0.7;
+  }
+
+  80% {
+    opacity: 0.55;
+  }
+
+  100% {
+    transform: translate3d(var(--drift), -125vh, 0) rotate(-45deg) scale(1.12);
+    opacity: 0;
+  }
 }
 
 @keyframes blink {
@@ -79,5 +273,11 @@ body {
   50%,
   100% {
     opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heart-rain {
+    display: none;
   }
 }

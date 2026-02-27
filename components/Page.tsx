@@ -38,7 +38,7 @@ export function Page({ page }: PageProps) {
   const paragraphs = useMemo(() => page.text.split("\n\n"), [page.text]);
 
   return (
-    <article className="paper-texture relative h-full w-full overflow-hidden rounded-2xl border border-amber-900/10 p-6 shadow-paper dark:border-amber-100/10 md:p-8">
+    <article className="paper-texture relative h-full w-full overflow-hidden rounded-2xl border border-amber-900/10 p-7 shadow-paper dark:border-amber-100/10 md:p-10">
       <div className="absolute right-4 top-4 -rotate-2 rounded-md border border-[#7b1f2b]/20 bg-[#ffe0b7] px-3 py-1 font-[var(--font-special-elite)] text-xs uppercase tracking-[0.15em] text-[#7b1f2b] dark:border-amber-200/20 dark:bg-[#493125] dark:text-amber-100">
         {page.stamp}
       </div>
@@ -47,12 +47,12 @@ export function Page({ page }: PageProps) {
         {page.note}
       </aside>
 
-      <div className="relative z-10 flex h-full flex-col gap-5 md:flex-row">
-        <div className="w-full space-y-4 md:w-3/5">
+      <div className="relative z-10 flex h-full flex-col gap-8 md:gap-10 md:flex-row">
+        <div className="w-full space-y-7 md:w-3/5">
           <h3 className="max-w-xl text-3xl font-semibold leading-tight text-[#531a1e] dark:text-rose-100">
             {page.title}
           </h3>
-          <div className="space-y-3 text-base leading-relaxed text-[#3b2518] dark:text-amber-100/90">
+          <div className="space-y-5 text-base leading-relaxed text-[#3b2518] dark:text-amber-100/90">
             {paragraphs.map((paragraph, index) => (
               <p key={`${page.title}-paragraph-${index}`} className="whitespace-pre-line">
                 {paragraph}
