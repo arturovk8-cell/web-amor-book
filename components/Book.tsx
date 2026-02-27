@@ -42,7 +42,7 @@ export function Book({ pages }: BookProps) {
     <div className="mx-auto flex w-full max-w-6xl flex-col items-center gap-6">
       <div className="relative w-full max-w-4xl">
         <div className="book-glow" />
-        <div className="relative mx-auto h-[620px] w-full max-w-4xl [perspective:2000px] sm:h-[580px] md:h-[640px]">
+        <div className="relative mx-auto h-[clamp(350px,62vh,640px)] w-full max-w-4xl [perspective:2000px] sm:h-[clamp(420px,66vh,640px)] md:h-[clamp(520px,70vh,640px)]">
           <div className="absolute left-1/2 top-1/2 h-[96%] w-[96%] -translate-x-1/2 -translate-y-1/2 rounded-3xl border border-amber-200/20 bg-black/15 shadow-2xl backdrop-blur-sm" />
           <div className="absolute left-1/2 top-1/2 h-[94%] w-[4%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#3f1f17] via-[#8a4e33] to-[#3f1f17] shadow-inner" />
 
@@ -77,13 +77,15 @@ export function Book({ pages }: BookProps) {
         </div>
       </div>
 
-      <Controls
-        onPrev={prev}
-        onNext={next}
-        canPrev={canPrev}
-        canNext={canNext}
-        currentLabel={currentLabel}
-      />
+      <div className="relative z-20 w-full">
+        <Controls
+          onPrev={prev}
+          onNext={next}
+          canPrev={canPrev}
+          canNext={canNext}
+          currentLabel={currentLabel}
+        />
+      </div>
     </div>
   );
 }

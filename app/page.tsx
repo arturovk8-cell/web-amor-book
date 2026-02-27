@@ -10,7 +10,7 @@ export default function Home() {
 
   return (
     <main className={darkMode ? "dark" : ""}>
-      <section className="relative min-h-screen overflow-hidden px-4 py-6 text-[#2f1a0f] transition-colors sm:px-8 md:px-10">
+      <section className="relative min-h-screen overflow-x-hidden px-4 py-6 text-[#2f1a0f] transition-colors sm:px-8 md:px-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(253,186,116,0.32),transparent_38%),radial-gradient(circle_at_90%_10%,rgba(248,113,113,0.25),transparent_34%),radial-gradient(circle_at_70%_80%,rgba(251,191,36,0.2),transparent_35%)] dark:bg-[radial-gradient(circle_at_10%_20%,rgba(251,191,36,0.15),transparent_35%),radial-gradient(circle_at_90%_10%,rgba(251,146,60,0.18),transparent_30%),radial-gradient(circle_at_70%_80%,rgba(248,113,113,0.12),transparent_30%)]" />
         <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-6">
           <header className="flex flex-wrap items-center justify-between gap-3">
