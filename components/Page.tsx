@@ -12,12 +12,12 @@ type PageProps = {
 export function Page({ page, onFinalAction, onSpoilerOpen }: PageProps) {
   const paragraphs = useMemo(() => page.text.split("\n\n"), [page.text]);
   const [pageTitle, pageSubtitle] = useMemo(() => {
-    const titleParts = page.title.split("—").map((part) => part.trim());
+    const titleParts = page.title.split(/\u2014/).map((part) => part.trim());
     if (titleParts.length < 2) {
-      return [page.title, ""] as const;
+      return [page.title.trim(), ""] as const;
     }
 
-    return [titleParts[0], titleParts.slice(1).join(" — ")] as const;
+    return [titleParts[0], titleParts.slice(1).join(" - ")] as const;
   }, [page.title]);
 
   return (
@@ -28,9 +28,11 @@ export function Page({ page, onFinalAction, onSpoilerOpen }: PageProps) {
         </div>
       ) : null}
 
-      <aside className="absolute -left-2 top-20 hidden -rotate-6 rounded-md border border-[#7b1f2b]/20 bg-[#fff5cc] px-3 py-2 font-[var(--font-caveat)] text-lg text-[#672114] shadow md:block">
-        {page.note}
-      </aside>
+      {page.note.trim() ? (
+        <aside className="absolute -left-2 top-20 hidden -rotate-6 rounded-md border border-[#7b1f2b]/20 bg-[#fff5cc] px-3 py-2 font-[var(--font-caveat)] text-lg text-[#672114] shadow md:block">
+          {page.note}
+        </aside>
+      ) : null}
 
       <div className="relative z-10 flex h-full flex-col gap-6">
         <div className="space-y-7 text-center">

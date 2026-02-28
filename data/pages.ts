@@ -109,10 +109,10 @@ es que lo que viene promete estar todavía más divertido.`,
     isFinal: true,
     finalHeadline: "Tal vez esta historia no es 100% real.",
     finalParagraphs: [
-      "Puede que tenga un poco de ego, drama y recuerdos “editados” por William Pitt. 😌",
+      "Puede que tenga un poco de ego, drama y recuerdos “editados” por William Pitt.",
       "Si quieres la versión verdadera (la bonita, la romántica y la que sí cuenta lo que pasó de verdad),"
     ],
-    finalActionLabel: "👉 lee el Libro 2: La Historia Verdadera.",
+    finalActionLabel: "lee el Libro 2: La Historia Verdadera.",
     finalImageSrc: "/images/bodafake.png",
     finalImageAlt: "Boda fake"
   }
@@ -129,86 +129,26 @@ export const trueStoryBookMeta: BookMeta = {
 
 export const trueStoryPages: StoryPage[] = [
   {
-    title: "Página 1 / Capítulo 1 — El inicio en Sunset",
-    text: `Todo comenzó en un bar llamado Sunset, en Metepec.
-Ahí estaba yo, William Pitt, intentando parecer tranquilo, cuando la vi por primera vez a ella: Golosa69.
+    title: "Crónicas de un Encuentro Inolvidable",
+    text: `Edición Sunset Metepec
 
-Desde ese momento quise llamar su atención, pero no supe cómo hacerlo de la manera correcta.
-Y como a veces pasa en los cuentos cuando el príncipe se pone nervioso, terminé diciéndole que bailaba feo, solo para que me mirara un poco más.`,
-    note: "Primera mirada en Sunset",
+“Cómo Golosa69 se convirtió en la historia más bonita de William Pitt.”
+
+Todo comenzó en Sunset, Metepec. Ahí estaba yo, William Pitt, intentando parecer tranquilo, cuando vi por primera vez a Golosa69. Quise llamar su atención, pero los nervios me traicionaron, y en vez de decir algo bonito, terminé diciéndole que bailaba feo… solo para que me mirara un poco más.
+
+Mi plan salió mal. La molesté tanto que se desesperó, y con razón. La verdad es que me daba pena hablarle: quería acercarme, hacerla reír, decirle algo lindo… pero no me salía nada. Y para empeorar todo, me puse borrachito y menos supe cómo seguir la conversación.
+
+Al día siguiente desperté con una sola idea: encontrarla. Busqué por todos lados su contacto, pedí favores, insistí durante horas, y después de casi medio día, por fin conseguí su WhatsApp. Cuando le escribí, le dije que ella me había pasado su número… pero ese es mi gran pequeño secreto.
+
+Desde ese mensaje, empezamos a hablar y hablar. Cada conversación me gustaba más que la anterior. Poco a poco descubrí su esencia, su luz, y sin darme cuenta, me fui enamorando… hasta el punto de no poder dejar de pensar en ella.
+
+Por eso existe este libro digital, hecho en Node.js, CSS y HTML, con animaciones hechas al aventón, pero con muchísimo cariño. Tal vez no sea un castillo de cuento, pero sí es una forma de decirle algo muy simple y muy real:
+
+Esta historia continuará…
+
+Spoiler: mi corazón ya eligió a su princesa.`,
+    note: "",
     stamp: "Clasificado"
-  },
-  {
-    title: "Página 2 / Capítulo 2 — La torpeza del corazón",
-    text: `Mi plan salió regular.
-Tanto la molesté con eso de su baile que llegó un momento en que se desesperó, y con toda razón.
-
-Pero la verdad es que yo no sabía cómo seguir hablándole.
-Me daba tanta pena que las ideas se me nublaban por completo.
-Quería acercarme, decir algo bonito, hacerla reír... y no me salía nada.
-
-Y para empeorar mi brillante estrategia, me puse borrachito y menos supe cómo hablar con ella.`,
-    note: "Torpeza romántica detectada",
-    stamp: "Evidencia"
-  },
-  {
-    title: "Página 3 / Capítulo 3 — La búsqueda",
-    text: `Al día siguiente desperté con una sola idea en la cabeza: encontrarla.
-Quería volver a hablar con ella, pero no tenía cómo.
-
-Empecé a buscar por todos lados algún dato de contacto.
-Pregunté, moví cielo y tierra, pedí favores y seguí insistiendo durante horas.
-Después de casi medio día de búsqueda, por fin conseguí su WhatsApp.
-
-Y sentí como si hubiera encontrado una llave mágica.`,
-    note: "Misión: encontrar su contacto",
-    stamp: "Evidencia"
-  },
-  {
-    title: "Página 4 / Capítulo 4 — El gran pequeño secreto",
-    text: `Cuando por fin le escribí, le dije que ella me había pasado su número.
-Pero no... la verdad es otra.
-
-Ese es mi gran pequeño secreto,
-uno de esos secretos que se guardan con una sonrisa
-y que quizá jamás le diré.
-
-Lo importante es que, de una u otra forma, ese mensaje llegó.
-Y con ese mensaje comenzó una historia que desde el primer momento se sintió especial.`,
-    note: "Secreto protegido",
-    stamp: "Clasificado"
-  },
-  {
-    title: "Página 5 / Capítulo 5 — Hablar y enamorarse",
-    text: `Con el paso de los días hablamos y hablamos.
-Cada conversación me gustaba más que la anterior.
-
-Poco a poco empecé a descubrir su forma de ser, su esencia, su luz, y todo eso fue creciendo dentro de mí.
-Hasta que un día entendí que ya no era solo emoción de momento.
-
-Me fue gustando más y más,
-al punto en que no puedo dejar de pensar en ella.`,
-    note: "Enamoramiento confirmado",
-    stamp: "Evidencia"
-  },
-  {
-    title: "Página 6 / Capítulo 6 — Un cuento hecho con cariño",
-    text: `Y por eso hago este tipo de cosas.
-Porque cuando alguien te inspira de verdad, buscas formas de demostrarlo.
-
-Este libro digital, programado en Node.js, CSS y HTML, con animaciones hechas al aventón, nació así:
-entre ideas, nervios, desvelos y muchísima ilusión.
-
-Tal vez no sea un castillo encantado,
-pero está hecho con algo que vale más:
-mucho cariño.`,
-    note: "Final con cariño",
-    stamp: "Spoiler",
-    isFinal: true,
-    finalHeadline: "Esta historia continuará...",
-    finalParagraphs: [
-      "Pero aquí hay un spoiler:",
-      "mi corazón ya eligió a su princesa."
-    ]
   }
 ];
+
