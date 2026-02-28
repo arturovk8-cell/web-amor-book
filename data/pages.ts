@@ -32,7 +32,7 @@ export const bookMeta: BookMeta = {
 
 export const storyPages: StoryPage[] = [
   {
-    title: "Página 1 / Capítulo 1 — El incidente del Sunset",
+    title: "Capítulo 1",
     text: `Todo comenzó en un bar llamado Sunset, en Metepec.
 Ahí estaba yo, William Pitt, en modo interesante, serio y claramente inalcanzable (según yo), cuando apareció Golosa69 con una energía sospechosamente intensa.
 
@@ -43,7 +43,7 @@ hacerme el difícil.`,
     stamp: "Clasificado"
   },
   {
-    title: "Página 2 / Capítulo 2 — La estrategia de defensa",
+    title: "Capítulo 2",
     text: `Para mantener mi reputación de hombre frío y elegante, la molestaba.
 Le decía que bailaba mal.
 Le tiraba carrilla.
@@ -56,7 +56,7 @@ no se alejó.`,
     stamp: "Evidencia"
   },
   {
-    title: "Página 3 / Capítulo 3 — Castrosidad de alto impacto",
+    title: "Capítulo 3",
     text: `Entre tanta castrosidad de su parte (admirable, la verdad), logró llamar mi atención.
 Lo que empezó como resistencia de mi parte, terminó en curiosidad.
 Y en un momento de aparente debilidad... o destino...
@@ -69,7 +69,7 @@ El que según no iba a caer.`,
     stamp: "Evidencia"
   },
   {
-    title: "Página 4 / Capítulo 4 — El mensaje del día siguiente",
+    title: "Capítulo 4",
     text: `Al día siguiente, ella me habló.
 Y ahí empezó todo.
 
@@ -82,7 +82,7 @@ ya me estaba importando más de lo que pensaba.`,
     stamp: "Clasificado"
   },
   {
-    title: "Página 5 / Capítulo 5 — El sapito feo",
+    title: "Capítulo 5",
     text: `Poco a poco me fui enamorando de ese sapito feo
 (dicho con cariño, porque sí, me encanta molestarla).
 
@@ -97,7 +97,7 @@ en mi princesa.`,
     stamp: "Evidencia"
   },
   {
-    title: "Página 6 / Capítulo 6 — Continuará + spoiler",
+    title: "Capítulo 6",
     text: `Y así, lo que empezó con acoso, carrilla y baile cuestionable,
 terminó convirtiéndose en una historia que apenas comienza.
 

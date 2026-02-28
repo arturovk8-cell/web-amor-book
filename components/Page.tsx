@@ -23,6 +23,14 @@ export function Page({ page, onFinalAction, onSpoilerOpen }: PageProps) {
   return (
     <article className="paper-texture relative h-full w-full overflow-hidden rounded-2xl border border-amber-900/10 p-6 shadow-paper md:p-8">
       <div className="relative z-10 flex h-full flex-col gap-6 overflow-y-auto pr-2">
+        <div className="flex justify-center">
+          <img
+            src="/images/pagina.webp"
+            alt="Decoración de cabecera"
+            className="h-auto max-h-20 w-full max-w-md object-contain"
+          />
+        </div>
+
         <div className="space-y-7 text-center">
           <div className="space-y-3">
             <h3 className="mx-auto max-w-3xl text-3xl font-semibold leading-tight text-[#531a1e]">
@@ -85,6 +93,14 @@ export function Page({ page, onFinalAction, onSpoilerOpen }: PageProps) {
             ) : null}
           </div>
         ) : null}
+
+        <div className="flex justify-center pb-1">
+          <img
+            src="/images/pie-de-pagina.webp"
+            alt="Decoración de pie de página"
+            className="h-auto max-h-16 w-full max-w-md object-contain"
+          />
+        </div>
       </div>
     </article>
   );
