@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Book } from "@/components/Book";
 import { bookMeta, storyPages, trueStoryBookMeta, trueStoryPages } from "@/data/pages";
 
@@ -9,6 +9,7 @@ const floatingHearts = Array.from({ length: 16 });
 export default function Home() {
   const [showGolosaVersion, setShowGolosaVersion] = useState(false);
   const [showTrueStoryBook, setShowTrueStoryBook] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
   const [spoilerLightbox, setSpoilerLightbox] = useState<{
     src: string;
     alt?: string;
@@ -22,6 +23,36 @@ export default function Home() {
     () => (showTrueStoryBook ? trueStoryPages : storyPages),
     [showTrueStoryBook]
   );
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const tryPlay = () => {
+      audio.play().catch(() => {
+        // Navegadores pueden bloquear autoplay sin interacción.
+      });
+    };
+
+    tryPlay();
+
+    const handleFirstInteraction = () => {
+      tryPlay();
+      window.removeEventListener("pointerdown", handleFirstInteraction);
+      window.removeEventListener("keydown", handleFirstInteraction);
+      window.removeEventListener("touchstart", handleFirstInteraction);
+    };
+
+    window.addEventListener("pointerdown", handleFirstInteraction, { once: true });
+    window.addEventListener("keydown", handleFirstInteraction, { once: true });
+    window.addEventListener("touchstart", handleFirstInteraction, { once: true });
+
+    return () => {
+      window.removeEventListener("pointerdown", handleFirstInteraction);
+      window.removeEventListener("keydown", handleFirstInteraction);
+      window.removeEventListener("touchstart", handleFirstInteraction);
+    };
+  }, []);
 
   return (
     <main className="relative flex h-[100dvh] flex-col overflow-hidden">
@@ -81,8 +112,11 @@ export default function Home() {
       <footer className="px-4 pb-3 pt-2 sm:px-8 md:px-10">
         <div className="mx-auto flex w-full max-w-6xl justify-center">
           <audio
+            ref={audioRef}
             controls
-            preload="metadata"
+            autoPlay
+            playsInline
+            preload="auto"
             className="h-10 w-[360px] max-w-full rounded-full border border-amber-100/40 bg-black/30 px-2"
           >
             <source src="/audio/amarte-es-un-placer.mp3" type="audio/mpeg" />

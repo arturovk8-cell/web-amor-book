@@ -46,8 +46,6 @@ export function Book({ pages, meta, onFinalAction, onSpoilerOpen }: BookProps) {
         <div className="book-glow" />
         <div className="relative mx-auto h-full min-h-[290px] w-full max-w-4xl [perspective:2000px] sm:min-h-[360px]">
           <div className="absolute left-1/2 top-1/2 h-[96%] w-[96%] -translate-x-1/2 -translate-y-1/2 rounded-3xl border border-amber-200/20 bg-black/15 shadow-2xl backdrop-blur-sm" />
-          <div className="absolute left-1/2 top-1/2 h-[94%] w-[4%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#3f1f17] via-[#8a4e33] to-[#3f1f17] shadow-inner" />
-
           <div className="absolute left-1/2 top-1/2 h-[90%] w-[92%] -translate-x-1/2 -translate-y-1/2">
             <AnimatePresence mode="wait" initial={false}>
               <motion.div
