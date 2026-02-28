@@ -11,9 +11,10 @@ type BookProps = {
   pages: StoryPage[];
   meta: BookMeta;
   onFinalAction?: () => void;
+  onSpoilerOpen?: (src: string, alt?: string) => void;
 };
 
-export function Book({ pages, meta, onFinalAction }: BookProps) {
+export function Book({ pages, meta, onFinalAction, onSpoilerOpen }: BookProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
 
@@ -75,7 +76,11 @@ export function Book({ pages, meta, onFinalAction }: BookProps) {
                     backText={meta.backCoverText}
                   />
                 ) : (
-                  <Page page={pages[currentIndex - 1]} onFinalAction={onFinalAction} />
+                  <Page
+                    page={pages[currentIndex - 1]}
+                    onFinalAction={onFinalAction}
+                    onSpoilerOpen={onSpoilerOpen}
+                  />
                 )}
               </motion.div>
             </AnimatePresence>

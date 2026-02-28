@@ -9,6 +9,10 @@ const floatingHearts = Array.from({ length: 16 });
 export default function Home() {
   const [showGolosaVersion, setShowGolosaVersion] = useState(false);
   const [showTrueStoryBook, setShowTrueStoryBook] = useState(false);
+  const [spoilerLightbox, setSpoilerLightbox] = useState<{
+    src: string;
+    alt?: string;
+  } | null>(null);
 
   const activeMeta = useMemo(
     () => (showTrueStoryBook ? trueStoryBookMeta : bookMeta),
@@ -33,7 +37,7 @@ export default function Home() {
           <header className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <p className="font-[var(--font-special-elite)] text-xs uppercase tracking-[0.2em] text-amber-200">
-                {showTrueStoryBook ? "Libro 2 abierto" : "Cuento digital interactivo"}
+                {activeMeta.subtitle}
               </p>
               <h1 className="text-2xl font-semibold text-amber-50 sm:text-3xl">
                 {activeMeta.title}
@@ -67,6 +71,7 @@ export default function Home() {
               onFinalAction={
                 showTrueStoryBook ? undefined : () => setShowTrueStoryBook(true)
               }
+              onSpoilerOpen={(src, alt) => setSpoilerLightbox({ src, alt })}
             />
           </div>
         </div>
@@ -84,6 +89,25 @@ export default function Home() {
           </audio>
         </div>
       </footer>
+
+      {spoilerLightbox ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
+          <div className="relative w-full max-w-3xl">
+            <button
+              type="button"
+              onClick={() => setSpoilerLightbox(null)}
+              className="absolute right-2 top-2 rounded-full bg-black/70 px-3 py-1 text-sm font-semibold text-white transition hover:bg-black/85"
+            >
+              Cerrar
+            </button>
+            <img
+              src={spoilerLightbox.src}
+              alt={spoilerLightbox.alt ?? "Spoiler"}
+              className="max-h-[86vh] w-full rounded-xl border border-amber-100/30 object-contain shadow-2xl"
+            />
+          </div>
+        </div>
+      ) : null}
 
       {showGolosaVersion ? (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 p-4">
