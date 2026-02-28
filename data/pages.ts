@@ -4,12 +4,14 @@ export type StoryPage = {
   title: string;
   text: string;
   note: string;
-  imagePlaceholder: string;
+  imagePlaceholder?: string;
   stamp: StoryPageStamp;
   isFinal?: boolean;
   finalHeadline?: string;
   finalParagraphs?: string[];
   finalActionLabel?: string;
+  finalImageSrc?: string;
+  finalImageAlt?: string;
 };
 
 export type BookMeta = {
@@ -38,7 +40,6 @@ Ella me estaba acosando... en el sentido más divertido de la palabra.
 Yo, por supuesto, hice lo que haría cualquier caballero emocionalmente confundido:
 hacerme el difícil.`,
     note: "William Pitt aplicando indiferencia premium",
-    imagePlaceholder: "Placeholder: escena dramática en Sunset con luces cálidas",
     stamp: "Clasificado"
   },
   {
@@ -52,7 +53,6 @@ Y aplicaba mi técnica secreta:
 Spoiler:
 no se alejó.`,
     note: "Estrategia fallida #1",
-    imagePlaceholder: "Placeholder: diagrama táctico de carrilla y baile cuestionable",
     stamp: "Evidencia"
   },
   {
@@ -66,7 +66,6 @@ Sí, yo.
 William Pitt.
 El que según no iba a caer.`,
     note: "Contacto establecido",
-    imagePlaceholder: "Placeholder: intercambio de número con tensión cinematográfica",
     stamp: "Evidencia"
   },
   {
@@ -80,7 +79,6 @@ Luego esa sensación rara de estar esperando el mensaje.
 Y cuando quise darme cuenta...
 ya me estaba importando más de lo que pensaba.`,
     note: "Nivel de enamoramiento: en aumento",
-    imagePlaceholder: "Placeholder: chat infinito con café frío al lado",
     stamp: "Clasificado"
   },
   {
@@ -96,7 +94,6 @@ y verla convertirse en princesa...
 
 en mi princesa.`,
     note: "Diagnóstico: romanticismo irreversible",
-    imagePlaceholder: "Placeholder: sapito coronado con brillo sospechoso",
     stamp: "Evidencia"
   },
   {
@@ -108,7 +105,6 @@ La historia de Golosa69 y William Pitt todavía se está escribiendo.
 Y lo mejor...
 es que lo que viene promete estar todavía más divertido.`,
     note: "Spoiler activo",
-    imagePlaceholder: "Aquí va el spoiler oficial de Golosa69 y William Pitt",
     stamp: "Spoiler",
     isFinal: true,
     finalHeadline: "Tal vez esta historia no es 100% real.",
@@ -116,7 +112,9 @@ es que lo que viene promete estar todavía más divertido.`,
       "Puede que tenga un poco de ego, drama y recuerdos “editados” por William Pitt. 😌",
       "Si quieres la versión verdadera (la bonita, la romántica y la que sí cuenta lo que pasó de verdad),"
     ],
-    finalActionLabel: "👉 lee el Libro 2: La Historia Verdadera."
+    finalActionLabel: "👉 lee el Libro 2: La Historia Verdadera.",
+    finalImageSrc: "/images/bodafake.png",
+    finalImageAlt: "Boda fake"
   }
 ];
 
@@ -138,7 +136,6 @@ Ahí estaba yo, William Pitt, intentando parecer tranquilo, cuando la vi por pri
 Desde ese momento quise llamar su atención, pero no supe cómo hacerlo de la manera correcta.
 Y como a veces pasa en los cuentos cuando el príncipe se pone nervioso, terminé diciéndole que bailaba feo, solo para que me mirara un poco más.`,
     note: "Primera mirada en Sunset",
-    imagePlaceholder: "Placeholder: primer encuentro en Sunset Metepec",
     stamp: "Clasificado"
   },
   {
@@ -152,7 +149,6 @@ Quería acercarme, decir algo bonito, hacerla reír... y no me salía nada.
 
 Y para empeorar mi brillante estrategia, me puse borrachito y menos supe cómo hablar con ella.`,
     note: "Torpeza romántica detectada",
-    imagePlaceholder: "Placeholder: William Pitt nervioso con plan fallido",
     stamp: "Evidencia"
   },
   {
@@ -166,7 +162,6 @@ Después de casi medio día de búsqueda, por fin conseguí su WhatsApp.
 
 Y sentí como si hubiera encontrado una llave mágica.`,
     note: "Misión: encontrar su contacto",
-    imagePlaceholder: "Placeholder: búsqueda intensa de contacto",
     stamp: "Evidencia"
   },
   {
@@ -181,7 +176,6 @@ y que quizá jamás le diré.
 Lo importante es que, de una u otra forma, ese mensaje llegó.
 Y con ese mensaje comenzó una historia que desde el primer momento se sintió especial.`,
     note: "Secreto protegido",
-    imagePlaceholder: "Placeholder: mensaje enviado con nervios",
     stamp: "Clasificado"
   },
   {
@@ -195,7 +189,6 @@ Hasta que un día entendí que ya no era solo emoción de momento.
 Me fue gustando más y más,
 al punto en que no puedo dejar de pensar en ella.`,
     note: "Enamoramiento confirmado",
-    imagePlaceholder: "Placeholder: conversaciones largas y sonrisas",
     stamp: "Evidencia"
   },
   {
@@ -210,7 +203,6 @@ Tal vez no sea un castillo encantado,
 pero está hecho con algo que vale más:
 mucho cariño.`,
     note: "Final con cariño",
-    imagePlaceholder: "Aquí va el spoiler oficial de Golosa69 y William Pitt",
     stamp: "Spoiler",
     isFinal: true,
     finalHeadline: "Esta historia continuará...",

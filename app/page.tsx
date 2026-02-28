@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Book } from "@/components/Book";
 import { bookMeta, storyPages, trueStoryBookMeta, trueStoryPages } from "@/data/pages";
 
@@ -10,9 +10,18 @@ export default function Home() {
   const [showGolosaVersion, setShowGolosaVersion] = useState(false);
   const [showTrueStoryBook, setShowTrueStoryBook] = useState(false);
 
+  const activeMeta = useMemo(
+    () => (showTrueStoryBook ? trueStoryBookMeta : bookMeta),
+    [showTrueStoryBook]
+  );
+  const activePages = useMemo(
+    () => (showTrueStoryBook ? trueStoryPages : storyPages),
+    [showTrueStoryBook]
+  );
+
   return (
-    <main>
-      <section className="relative min-h-screen overflow-x-hidden px-4 py-6 text-[#2f1a0f] transition-colors sm:px-8 md:px-10">
+    <main className="relative flex h-[100dvh] flex-col overflow-hidden">
+      <section className="relative flex-1 overflow-hidden px-4 pb-3 pt-4 text-[#2f1a0f] sm:px-8 md:px-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_10%_20%,rgba(253,186,116,0.32),transparent_38%),radial-gradient(circle_at_90%_10%,rgba(248,113,113,0.25),transparent_34%),radial-gradient(circle_at_70%_80%,rgba(251,191,36,0.2),transparent_35%)]" />
         <div className="heart-rain" aria-hidden="true">
           {floatingHearts.map((_, index) => (
@@ -20,36 +29,50 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-6">
+        <div className="relative z-10 mx-auto flex h-full w-full max-w-6xl min-h-0 flex-col gap-4">
           <header className="flex flex-wrap items-center justify-between gap-3">
             <div>
               <p className="font-[var(--font-special-elite)] text-xs uppercase tracking-[0.2em] text-amber-200">
-                Cuento digital interactivo
+                {showTrueStoryBook ? "Libro 2 abierto" : "Cuento digital interactivo"}
               </p>
               <h1 className="text-2xl font-semibold text-amber-50 sm:text-3xl">
-                Crónicas de un Acoso Exitoso
+                {activeMeta.title}
               </h1>
             </div>
             <div className="ml-auto flex w-full flex-col items-end gap-2 sm:w-auto">
-              <button
-                type="button"
-                onClick={() => setShowGolosaVersion(true)}
-                className="rounded-full border border-rose-100/40 bg-[#f97360] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#ef5f4b]"
-              >
-                Ver versión de Golosa69
-              </button>
+              {showTrueStoryBook ? (
+                <button
+                  type="button"
+                  onClick={() => setShowTrueStoryBook(false)}
+                  className="rounded-full border border-amber-100/50 bg-[#fff5e6] px-4 py-2 text-sm font-semibold text-[#5c2b18] transition hover:bg-[#ffe8c4]"
+                >
+                  Volver al Libro 1
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setShowGolosaVersion(true)}
+                  className="rounded-full border border-rose-100/40 bg-[#f97360] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#ef5f4b]"
+                >
+                  Ver versión de Golosa69
+                </button>
+              )}
             </div>
           </header>
 
-          <Book
-            pages={storyPages}
-            meta={bookMeta}
-            onFinalAction={() => setShowTrueStoryBook(true)}
-          />
+          <div className="min-h-0 flex-1">
+            <Book
+              pages={activePages}
+              meta={activeMeta}
+              onFinalAction={
+                showTrueStoryBook ? undefined : () => setShowTrueStoryBook(true)
+              }
+            />
+          </div>
         </div>
       </section>
 
-      <footer className="px-4 pb-8 sm:px-8 md:px-10">
+      <footer className="px-4 pb-3 pt-2 sm:px-8 md:px-10">
         <div className="mx-auto flex w-full max-w-6xl justify-center">
           <audio
             controls
@@ -61,23 +84,6 @@ export default function Home() {
           </audio>
         </div>
       </footer>
-
-      {showTrueStoryBook ? (
-        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/70 p-4 sm:p-6">
-          <div className="mx-auto w-full max-w-6xl">
-            <div className="mb-4 flex justify-end">
-              <button
-                type="button"
-                onClick={() => setShowTrueStoryBook(false)}
-                className="rounded-full border border-amber-100/50 bg-[#fff5e6] px-4 py-2 text-sm font-semibold text-[#5c2b18] transition hover:bg-[#ffe8c4]"
-              >
-                Cerrar Libro 2
-              </button>
-            </div>
-            <Book pages={trueStoryPages} meta={trueStoryBookMeta} />
-          </div>
-        </div>
-      ) : null}
 
       {showGolosaVersion ? (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 p-4">
