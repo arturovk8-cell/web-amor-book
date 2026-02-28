@@ -1,17 +1,19 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
-import { bookMeta, type StoryPage } from "@/data/pages";
+import { useMemo, useState } from "react";
+import type { BookMeta, StoryPage } from "@/data/pages";
 import { Controls } from "./Controls";
 import { Cover } from "./Cover";
 import { Page } from "./Page";
 
 type BookProps = {
   pages: StoryPage[];
+  meta: BookMeta;
+  onFinalAction?: () => void;
 };
 
-export function Book({ pages }: BookProps) {
+export function Book({ pages, meta, onFinalAction }: BookProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(1);
 
@@ -19,6 +21,11 @@ export function Book({ pages }: BookProps) {
 
   const canPrev = currentIndex > 0;
   const canNext = currentIndex < totalPages - 1;
+  const currentLabel = useMemo(() => {
+    if (currentIndex === 0) return "Portada";
+    if (currentIndex === totalPages - 1) return "Contraportada";
+    return `Página ${currentIndex} de ${pages.length}`;
+  }, [currentIndex, pages.length, totalPages]);
 
   const next = () => {
     if (!canNext) return;
@@ -57,18 +64,18 @@ export function Book({ pages }: BookProps) {
                 {currentIndex === 0 ? (
                   <Cover
                     side="front"
-                    title={bookMeta.title}
-                    subtitle={bookMeta.subtitle}
-                    smallText={bookMeta.coverSmallText}
+                    title={meta.title}
+                    subtitle={meta.subtitle}
+                    smallText={meta.coverSmallText}
                   />
                 ) : currentIndex === totalPages - 1 ? (
                   <Cover
                     side="back"
-                    title={bookMeta.title}
-                    backText={bookMeta.backCoverText}
+                    title={meta.title}
+                    backText={meta.backCoverText}
                   />
                 ) : (
-                  <Page page={pages[currentIndex - 1]} />
+                  <Page page={pages[currentIndex - 1]} onFinalAction={onFinalAction} />
                 )}
               </motion.div>
             </AnimatePresence>
@@ -82,6 +89,7 @@ export function Book({ pages }: BookProps) {
           onNext={next}
           canPrev={canPrev}
           canNext={canNext}
+          currentLabel={currentLabel}
         />
       </div>
     </div>

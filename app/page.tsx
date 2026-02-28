@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { Book } from "@/components/Book";
-import { storyPages } from "@/data/pages";
+import { bookMeta, storyPages, trueStoryBookMeta, trueStoryPages } from "@/data/pages";
 
 const floatingHearts = Array.from({ length: 16 });
 
 export default function Home() {
   const [showGolosaVersion, setShowGolosaVersion] = useState(false);
+  const [showTrueStoryBook, setShowTrueStoryBook] = useState(false);
 
   return (
     <main>
@@ -18,6 +19,7 @@ export default function Home() {
             <span key={`heart-${index}`} className="heart-drop" />
           ))}
         </div>
+
         <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-6">
           <header className="flex flex-wrap items-center justify-between gap-3">
             <div>
@@ -29,14 +31,6 @@ export default function Home() {
               </h1>
             </div>
             <div className="ml-auto flex w-full flex-col items-end gap-2 sm:w-auto">
-              <audio
-                controls
-                preload="metadata"
-                className="h-10 w-[320px] max-w-full rounded-full border border-amber-100/40 bg-black/30 px-2"
-              >
-                <source src="/audio/amarte-es-un-placer.mp3" type="audio/mpeg" />
-                Tu navegador no soporta audio MP3.
-              </audio>
               <button
                 type="button"
                 onClick={() => setShowGolosaVersion(true)}
@@ -47,9 +41,43 @@ export default function Home() {
             </div>
           </header>
 
-          <Book pages={storyPages} />
+          <Book
+            pages={storyPages}
+            meta={bookMeta}
+            onFinalAction={() => setShowTrueStoryBook(true)}
+          />
         </div>
       </section>
+
+      <footer className="px-4 pb-8 sm:px-8 md:px-10">
+        <div className="mx-auto flex w-full max-w-6xl justify-center">
+          <audio
+            controls
+            preload="metadata"
+            className="h-10 w-[360px] max-w-full rounded-full border border-amber-100/40 bg-black/30 px-2"
+          >
+            <source src="/audio/amarte-es-un-placer.mp3" type="audio/mpeg" />
+            Tu navegador no soporta audio MP3.
+          </audio>
+        </div>
+      </footer>
+
+      {showTrueStoryBook ? (
+        <div className="fixed inset-0 z-50 overflow-y-auto bg-black/70 p-4 sm:p-6">
+          <div className="mx-auto w-full max-w-6xl">
+            <div className="mb-4 flex justify-end">
+              <button
+                type="button"
+                onClick={() => setShowTrueStoryBook(false)}
+                className="rounded-full border border-amber-100/50 bg-[#fff5e6] px-4 py-2 text-sm font-semibold text-[#5c2b18] transition hover:bg-[#ffe8c4]"
+              >
+                Cerrar Libro 2
+              </button>
+            </div>
+            <Book pages={trueStoryPages} meta={trueStoryBookMeta} />
+          </div>
+        </div>
+      ) : null}
 
       {showGolosaVersion ? (
         <div className="fixed inset-0 z-40 flex items-center justify-center bg-black/60 p-4">

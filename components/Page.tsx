@@ -1,39 +1,14 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type { StoryPage } from "@/data/pages";
 
 type PageProps = {
   page: StoryPage;
+  onFinalAction?: () => void;
 };
 
-function Typewriter({ text }: { text: string }) {
-  const [visibleChars, setVisibleChars] = useState(0);
-
-  useEffect(() => {
-    setVisibleChars(0);
-    const timer = window.setInterval(() => {
-      setVisibleChars((prev) => {
-        if (prev >= text.length) {
-          window.clearInterval(timer);
-          return prev;
-        }
-        return prev + 1;
-      });
-    }, 70);
-
-    return () => window.clearInterval(timer);
-  }, [text]);
-
-  return (
-    <p className="text-3xl font-semibold leading-tight text-[#7b1f2b] dark:text-rose-200 md:text-4xl">
-      {text.slice(0, visibleChars)}
-      <span className="typewriter-caret" />
-    </p>
-  );
-}
-
-export function Page({ page }: PageProps) {
+export function Page({ page, onFinalAction }: PageProps) {
   const [showImageFallback, setShowImageFallback] = useState(false);
   const paragraphs = useMemo(() => page.text.split("\n\n"), [page.text]);
 
@@ -47,7 +22,7 @@ export function Page({ page }: PageProps) {
         {page.note}
       </aside>
 
-      <div className="relative z-10 flex h-full flex-col gap-8 md:gap-10 md:flex-row">
+      <div className="relative z-10 flex h-full flex-col gap-8 md:flex-row md:gap-10">
         <div className="w-full space-y-7 md:w-3/5">
           <h3 className="max-w-xl text-3xl font-semibold leading-tight text-[#531a1e] dark:text-rose-100">
             {page.title}
@@ -82,12 +57,29 @@ export function Page({ page }: PageProps) {
           </div>
 
           {page.isFinal ? (
-            <div className="space-y-2 rounded-lg border border-[#7b1f2b]/20 bg-[#fff1dc] p-4 dark:border-amber-100/20 dark:bg-[#352319]">
-              <Typewriter text="Esta historia continuará…" />
-              <p className="text-sm leading-relaxed text-[#55231a] dark:text-amber-100/90">
-                Pero aquí un spoiler 👀: (lo que sigue en esta historia se revela con una
-                imagen especial).
-              </p>
+            <div className="space-y-3 rounded-lg border border-[#7b1f2b]/20 bg-[#fff1dc] p-4 dark:border-amber-100/20 dark:bg-[#352319]">
+              {page.finalHeadline ? (
+                <p className="text-2xl font-semibold leading-tight text-[#7b1f2b] md:text-3xl">
+                  {page.finalHeadline}
+                </p>
+              ) : null}
+              {page.finalParagraphs?.map((paragraph, index) => (
+                <p
+                  key={`${page.title}-final-${index}`}
+                  className="text-sm leading-relaxed text-[#55231a] dark:text-amber-100/90"
+                >
+                  {paragraph}
+                </p>
+              ))}
+              {page.finalActionLabel && onFinalAction ? (
+                <button
+                  type="button"
+                  onClick={onFinalAction}
+                  className="mt-2 rounded-full bg-[#7b1f2b] px-4 py-2 text-sm font-semibold text-white transition hover:bg-[#651823]"
+                >
+                  {page.finalActionLabel}
+                </button>
+              ) : null}
             </div>
           ) : null}
         </div>

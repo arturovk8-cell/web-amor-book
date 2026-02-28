@@ -3,16 +3,21 @@ type ControlsProps = {
   onNext: () => void;
   canPrev: boolean;
   canNext: boolean;
+  currentLabel: string;
 };
 
 export function Controls({
   onPrev,
   onNext,
   canPrev,
-  canNext
+  canNext,
+  currentLabel
 }: ControlsProps) {
   return (
-    <div className="flex w-full items-center justify-center">
+    <div className="flex w-full flex-col items-center gap-4">
+      <p className="rounded-full border border-amber-200/50 bg-amber-100/60 px-4 py-1 text-xs uppercase tracking-[0.16em] text-[#4b2b1a]">
+        {currentLabel}
+      </p>
       <div className="flex items-center gap-3">
         <button
           type="button"
