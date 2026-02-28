@@ -66,6 +66,7 @@ export default function Home() {
 
           <div className="min-h-0 flex-1">
             <Book
+              key={showTrueStoryBook ? "book-2" : "book-1"}
               pages={activePages}
               meta={activeMeta}
               onFinalAction={
