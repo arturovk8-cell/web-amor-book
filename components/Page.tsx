@@ -40,7 +40,11 @@ export function Page({ page, onFinalAction, onSpoilerOpen }: PageProps) {
           <div className="flex justify-center">
             <button
               type="button"
-              onClick={() => onSpoilerOpen?.(page.finalImageSrc, page.finalImageAlt)}
+              onClick={() => {
+                if (!onSpoilerOpen) return;
+                if (!page.finalImageSrc || !page.finalImageAlt) return;
+                onSpoilerOpen(page.finalImageSrc, page.finalImageAlt);
+              }}
               className="rounded-full bg-[#7b1f2b] px-5 py-2 text-sm font-semibold text-white transition hover:bg-[#651823]"
             >
               Ver spoiler
